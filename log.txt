@@ -18,3 +18,10 @@ Preview Link: https://p.scdn.co/mp3-preview/70f126c139847335bc03c756c55b80c99892
 
 Album: Or Nah (feat. The Weeknd, Wiz Khalifa and DJ Mustard) [Remix Version]
 
+
+Sun Jan 22 2017 23:58:38 GMT-0600 (CST)my-tweets
+
+Hey LIRI: node liri.js my-tweets #NodeJS
+
+Hello Twitter! #myfirstTweet
+

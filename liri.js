@@ -61,13 +61,19 @@ function myTweets() {
 	});
 
 	// searches for the 20 latest tweets by me (@pethoang) and consoles them out 
-	client.get("search/tweets", {q: "pethoang", count: 20}, function(error, tweets, response) {
+	client.get("search/tweets", {q: "pethoang", count: 20}, function(err, tweets, response) {
+		if (err) {
+			console.log("Error: " + err);
+			return;
+		}
+		else {
 		var tweetData = "";
 		for (var i = 0; i < tweets.statuses.length; i++) {
 			tweetData += "\n" + tweets.statuses[i].text + "\n";
 		}
 		console.log(tweetData);
 		dataLog(tweetData);
+		}
 	}); 
 }
 
