@@ -67,7 +67,7 @@ function myTweets() {
 			tweetData += "\n" + tweets.statuses[i].text + "\n";
 		}
 		console.log(tweetData);
-		// logData(tweetData);
+		dataLog(tweetData);
 	}); 
 }
 
@@ -106,7 +106,7 @@ function spotifyThisSong() {
 
 			console.log("\n" + "Spotify:");
 			console.log(songData);
-			// logData(songData);
+			dataLog(songData);
 		}
 	});
 }
@@ -164,7 +164,33 @@ function movieThis() {
 
 			console.log("\n" + "OMDb:");
 			console.log(movieData);
-			// logData(movieData);							
+			dataLog(movieData);							
+		}
+	});
+}
+
+// using the fs node package, this function will allow LIRI to read the random.txt file and use it to call one of LIRI's commands
+
+function doWhatItSays() {
+	//using fs it will read the text file "random.txt"
+	fs.readFile("random.txt", "utf8", function(err, data) {
+		var dataArray = data.split(",");
+		parameters = dataArray[0];
+		if (dataArray.length > 1) {
+			input = dataArray[1];
+		}
+		spotifyThisSong();
+	});
+}
+
+// this function output data into a log.txt file
+
+function dataLog(info) {
+	var date = new Date();
+	var log = "\n" + date + parameters + "" + input + "\n" + info + "\n";
+	fs.appendFile("log.txt", log, function(err) {
+		if (err) {
+			throw err;
 		}
 	});
 }

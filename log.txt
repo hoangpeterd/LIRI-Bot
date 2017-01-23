@@ -1,0 +1,20 @@
+
+Sun Jan 22 2017 23:48:47 GMT-0600 (CST)
+ node liri.jsmy-tweets
+
+Hey LIRI: node liri.js my-tweets #NodeJS
+
+Hello Twitter! #myfirstTweet
+
+
+Sun Jan 22 2017 23:48:56 GMT-0600 (CST)
+ node liri.jsspotify-this-song
+
+Artist: Ty Dolla $ign
+
+Song Name: Or Nah (feat. The Weeknd, Wiz Khalifa and DJ Mustard) - Remix
+
+Preview Link: https://p.scdn.co/mp3-preview/70f126c139847335bc03c756c55b80c99892268e?cid=null
+
+Album: Or Nah (feat. The Weeknd, Wiz Khalifa and DJ Mustard) [Remix Version]
+
