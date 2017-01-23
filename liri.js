@@ -61,7 +61,7 @@ function myTweets() {
 	});
 
 	// searches for the 20 latest tweets by me (@pethoang) and consoles them out 
-	client.get("search/tweets", {q: "pethoang", count: 20}, function(err, tweets, response) {
+	client.get("search/tweets", {q: "pethoang", count: 20}, function(error, tweets, response) {
 		var tweetData = "";
 		for (var i = 0; i < tweets.statuses.length; i++) {
 			tweetData += "\n" + tweets.statuses[i].text + "\n";
@@ -69,4 +69,102 @@ function myTweets() {
 		console.log(tweetData);
 		// logData(tweetData);
 	}); 
+}
+
+//function for spotifyThisSong that pulls data from spotify
+
+function spotifyThisSong() {
+	// takes in user input for song name
+	var song = input;
+
+	// if no song is provded, the program will default to "or nah" by ty dolla $ign
+	if (input === ""){
+		song = "The Sign";
+	}
+
+	// this takes in the song request and searches for it using spotify
+	spotify.search({type: "track", query: song}, function(err, data) {
+		if (err) {
+			console.log("Error: " + err);
+			return;
+		}
+		else {
+			var songData = "";
+			var songReturn = data.tracks.items[0];
+
+			var artist = "\n" + "Artist: " + songReturn.artists[0].name + "\n";
+			songData += artist;
+
+			var name = "\n" + "Song Name: " + songReturn.name + "\n";
+			songData += name;
+
+			var preview = "\n" + "Preview Link: " + songReturn.preview_url + "\n";
+			songData += preview;
+
+			var albumName = "\n" + "Album: " + songReturn.album.name + "\n";
+			songData += albumName;
+
+			console.log("\n" + "Spotify:");
+			console.log(songData);
+			// logData(songData);
+		}
+	});
+}
+
+// function for OMDB via request
+
+function movieThis() {
+	//takes in user input for movie title
+	var movieTitle = input;
+
+	// if no movie is provided, the program will default to "mr. nobody"
+	if (input === "") {
+		movieTitle = "Mr. Nobody";
+	}
+
+	// variable for the OMDb API call
+	var OMDb = "http://omdbapi.com?t=" + movieTitle + "&r=json&tomatoes=true";
+
+	// this takes in the movie request and searches for it in OMDb via request
+	request(OMDb, function (err, response, body) {
+		if (err) {
+			console.log("Error: " + err);
+			return;
+		}
+		else if (response.statusCode === 200) {
+			var movie = JSON.parse(body);
+			var movieData = "";
+
+			var title = "\n" + "Movie Title: " + movie.Title + "\n";
+			movieData += title;	
+
+			var year = "\n" + "Year Released: " + movie.Year + "\n";
+			movieData += year;
+
+			var rating = "\n" + "IMDB Rating: " + movie.imdbRating + "\n";
+			movieData += rating;	
+
+			var country = "\n" + "Country: " + movie.Country + "\n";
+			movieData += country;
+
+			var language = "\n" + "Language: " + movie.Language + "\n";
+			movieData += language;
+
+			var plot = "\n" + "Movie Plot: " + movie.Plot + "\n";
+			movieData += plot;	
+
+			var actors = "\n" + "Actors: " + movie.Actors + "\n";
+			movieData += actors;
+
+			var tomatoMeter = "\n" + "Rotten Tomato Rating: " + movie.tomatoUserMeter + "\n";
+			movieData += tomatoMeter;
+
+			var tomatoURL = "\n" + "Rotten Tomato Rating Link: " + movie.tomatoURL + "\n";
+			movieData += tomatoURL;
+
+			console.log("\n" + "OMDb:");
+			console.log(movieData);
+			// logData(movieData);							
+		}
+	});
 }
